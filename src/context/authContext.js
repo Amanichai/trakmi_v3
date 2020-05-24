@@ -21,17 +21,21 @@ const signup = (dispatch)=> async ({email, password}) =>{
         dispatch({ type: 'signup', payload: response.data.token})
         navigate('Tracks')
     }catch (err){
-            dispatch({ type: 'add_error', payload: 'Invalid email or password'})
+            dispatch({ type: 'add_error', payload: 'Email not available'})
     };
 };
 
-const signin = (dispatch)=>{
-    return({email, password})=>{
-        //RETRIEVE EMAIL AND PASS FROM DB
-        //SIGN IN IF AUTHENTICATED
-        //SEND ERROR IF NOT AUTHENTICATED
+const signin = (dispatch)=>async ({email, password})=>{
+    try {
+        const response = await trakerApi.post('/signin', {email, password});
+        await AsyncStorage.setItem('token', response.data.token);
+        dispatch({ type: 'signin', payload: response.data.token});
+        navigate('Tracks');
+    }catch (err){
+        dispatch({ type: 'add_error', payload: 'Invalid email or password'})
     }
 }
+
 
 const signout = (dispatch)=>{
     return ()=>{

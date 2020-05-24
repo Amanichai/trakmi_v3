@@ -11,6 +11,7 @@ import TrackListScreen from './src/screens/TrackListScreen';
 import { createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Provider as AuthProvider } from './src/context/authContext';
+import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   loginflow: createStackNavigator({
@@ -32,7 +33,7 @@ const App = createAppContainer(switchNavigator);
 export default ()=>{
   return (
             <AuthProvider>
-              <App />
+              <App ref={(navigator)=>setNavigator(navigator)} />
             </AuthProvider>
           );
 }

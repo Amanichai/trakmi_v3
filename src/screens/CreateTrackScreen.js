@@ -5,7 +5,7 @@ import { Text } from 'react-native-elements';
 import {SafeAreaView, withNavigationFocus } from 'react-navigation';
 import Map from '../components/Map';
 import useLocation from '../hooks/useLocation';
-
+import TrackForm from '../components/TrackForm';
 import {Context as LocationContext} from '../context/locationContext';
 
 const CreateTrackScreen = ({isFocused})=>{
@@ -19,6 +19,7 @@ const CreateTrackScreen = ({isFocused})=>{
                 <Text h3 style={styles.ctrTxt}>CreateTrackScreen</Text>
                 <Map></Map>
                 {err ? <Text>Please allow permissions to proceed...</Text> : null}
+                <TrackForm></TrackForm>
            </SafeAreaView>
 }
 

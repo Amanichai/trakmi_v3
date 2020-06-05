@@ -1,17 +1,35 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Context as LocationContext } from '../context/locationContext';
 import { Input, Button } from 'react-native-elements';
 import {StyleSheet} from 'react-native';
 import Spacer from '../components/spacer';
+import { color } from 'react-native-reanimated';
 
 const TrackForm = ()=>{
-    return <>
+    const {
+        state: {name, record, location},
+        startRecord,
+        stopRecord,
+        changeName
+    } = useContext(LocationContext);
+
+    console.log(location)
+    return (
+        <>
             <Spacer>
-                <Input placeholder='Enter Track Name'></Input>
+                <Input value={name} onChangeText={changeName} placeholder='Enter Track Name'></Input>
             </Spacer>
-            <Spacer><Button title='Start Recording'></Button></Spacer>
+            <Spacer>
+                {record 
+                ?  <Button buttonStyle={color='green'} onPress={startRecord} title='Start Recording'></Button>
+                :  <Button onPress={stopRecord} title='Stop Recording'></Button>
+                }
+            </Spacer>
+               
 
     
-    </>
+        </>
+    )
 }
 
 const styles = StyleSheet.create({

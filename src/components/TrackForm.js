@@ -1,19 +1,17 @@
 import React, {useContext} from 'react';
-import {Context as LocationContext } from '../context/locationContext';
 import { Input, Button } from 'react-native-elements';
 import {StyleSheet} from 'react-native';
 import Spacer from '../components/spacer';
 import { color } from 'react-native-reanimated';
 
 const TrackForm = ()=>{
-    const {
-        state: {name, record, location},
-        startRecord,
-        stopRecord,
-        changeName
-    } = useContext(LocationContext);
+    // const {
+    //     state: {name, record, location},
+    //     startRecord,
+    //     stopRecord,
+    //     changeName
+    // } = useContext(LocationContext);
 
-    console.log(location)
     return (
         <>
             <Spacer>

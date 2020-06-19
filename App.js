@@ -40,6 +40,6 @@ export default ()=>{
               <AuthProvider>
                 <App ref={(navigator)=>setNavigator(navigator)} />
               </AuthProvider>
-          </LocationProvider>
+            </LocationProvider>
           );
 }
